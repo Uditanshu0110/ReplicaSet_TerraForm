@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rsweb1
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      env: dev
+      dc: IN
+      app: webserver
+    matchExpressions:
+     - { key: dc, operator: In, values: [ IN , US ] }
+     - { key: env, operator: In, values: [ dev ] }
+     - { key: app, operator: In, values: [ webserver ] }
+  template:
+    metadata:
+      name: mypod1
+      labels:
+        env: dev
+        dc: IN
+        app: webserver
+    spec:
+      containers:
+      - name: "mycon1"
+        image: "vimal13/apache-webserver-php"
+        
+
