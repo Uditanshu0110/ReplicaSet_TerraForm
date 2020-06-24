@@ -26,4 +26,3 @@ spec:
       - name: "mycon1"
         image: "vimal13/apache-webserver-php"
         
-
